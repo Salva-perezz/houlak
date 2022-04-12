@@ -4,7 +4,8 @@ const { requests } = require('../../models');
 const requestLogger = async (req, res, next) => {
     try {
         const { ip, body } = req;
-    
+        console.log(`New request from ${ip}, inserting request into the database`);
+
         await requests.create({
             request_ip: ip,
             request_artist: body.artist,
