@@ -14,16 +14,16 @@ const NavbarComponent = () => {
           height="30"
           className="d-inline-block align-top"
         />{" "}
-        Spotify searcher
+        Spotify
       </Navbar.Brand>
       <Form className="d-flex">
         <FormControl
           type="search"
-          placeholder="Search"
+          placeholder="Kanye West"
           className="me-2"
           aria-label="Search"
         />
-        <Button variant="outline-success">Search</Button>
+        <Button variant="outline-success">Buscar</Button>
       </Form>
     </Container>
   </Navbar>);

@@ -3,7 +3,7 @@ import Home from './components/home/Home';
 
 function App() {
   return (
-    <div style={{backgroundColor: 'black', height: '100%'}}>
+    <div>
       <NavbarComponent />
       <Home></Home>
     </div>
