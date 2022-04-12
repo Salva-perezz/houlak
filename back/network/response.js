@@ -5,11 +5,10 @@ exports.succes = (req, res, body, statusCode) => {
         body: body || ''
     };
 
-    req.status(statusCode).send(response);
+    res.status(statusCode).send(response);
 };
 
 exports.error = (req, res, body, statusCode) => {
-    console.log('[ERROR]', body);
 
     const response = {
         error: true,
@@ -17,5 +16,5 @@ exports.error = (req, res, body, statusCode) => {
         body: body || 'Internal Server Error'
     };
 
-    req.status(statusCode).send(response);
+    res.status(statusCode).send(response);
 };

@@ -1,5 +1,5 @@
 const Sequelize = require("sequelize")
-const db = require("../../dbConnection/db");
+const db = require("../dbConnection");
 
 class Request extends Sequelize.Model {};
 
