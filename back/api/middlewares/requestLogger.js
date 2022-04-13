@@ -1,4 +1,4 @@
-const { response } = require('express');
+const { response } = require('../../network/response');
 const { requests } = require('../../models');
 
 const requestLogger = async (req, res, next) => {
