@@ -3,7 +3,7 @@ const { requests } = require('../../models');
 
 const requestLogger = async (req, res, next) => {
     try {
-        const { ip, body } = req;
+        const { ip, query } = req;
         console.log(`New request from ${ip}, inserting request into the database`);
 
         await requests.create({
