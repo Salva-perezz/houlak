@@ -1,6 +1,7 @@
 const response = require('../../../network/response');
 const spotifyApi = require('../../../spotifyApi');
 const { artistConstructor, albumsConstructor } = require('./helpers');
+const getSpotifyAuthToken = require('../../spotifyAuth/spotifyAuth');
 
 const getArtist = async (req, res) => {
     try {
@@ -19,6 +20,7 @@ const getArtist = async (req, res) => {
         response.succes(req, res, responseObject, 200);
     } catch(e) {
         console.log('[ERROR]', e);
+        getSpotifyAuthToken();
         response.error(req, res, null, 500);
     }
 };
