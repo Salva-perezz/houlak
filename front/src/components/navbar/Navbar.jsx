@@ -5,6 +5,7 @@ import axios from '../../axios';
 import { useDispatch } from "react-redux";
 import { setArtistAndAlbums } from '../../store/artistAndAlbums';
 import { setLoading } from '../../store/loading';
+import { setResponseError } from '../../store/clientError';
 
 const NavbarComponent = () => {
   const [searchInput, setSearchInput] = useState('');
@@ -12,13 +13,20 @@ const NavbarComponent = () => {
   const dispatch = useDispatch();
 
   const submitHandler = async (e) => {
-    e.preventDefault();
-    setIsLoading(true);
-    dispatch(setLoading(true));
-    const { data } = await axios.get(`/artist?artistName=${searchInput}`);
-    dispatch(setArtistAndAlbums(data.body));
-    dispatch(setLoading(false));
-    setIsLoading(false);
+    try {
+      e.preventDefault();
+      dispatch(setResponseError(false));
+      setIsLoading(true);
+      dispatch(setLoading(true));
+      const { data } = await axios.get(`/artist?artistName=${searchInput}`);
+      dispatch(setArtistAndAlbums(data.body));
+      dispatch(setLoading(false));
+      setIsLoading(false);
+    } catch(e) {
+      dispatch(setResponseError('Lo sentimos, no encontramos lo que estas buscando'));
+      dispatch(setLoading(false));
+      setIsLoading(false);
+    }
   };
 
   return(
