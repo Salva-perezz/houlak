@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const artistNetwork = require('./artist/network');
+const { getArtist } = require('./controller');
 
-router.use('/artist', artistNetwork);
+router.get('/', getArtist);
 
 module.exports = router;
