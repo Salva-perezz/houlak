@@ -5,7 +5,9 @@ const { requestLogger } = require('./middlewares');
 const components = require('./components');
 const { PORT } = require('../config').api;
 const getSpotifyAuthToken = require('./spotifyAuth/spotifyAuth');
+const cors = require('cors');
 
+app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(requestLogger);
