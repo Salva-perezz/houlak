@@ -11,7 +11,7 @@ const ArtistCard = ({ artist }) => {
         <Card.Text className="textWhite">
           Generos: {artist.genres.join(', ')}
         </Card.Text>
-        <Button variant="outline-success">Ver artista</Button>
+        <Button href={artist.url} target='_blank' variant="outline-success">Ver artista</Button>
       </Card.Body>
     </Card>
   );
