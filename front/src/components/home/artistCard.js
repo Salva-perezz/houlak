@@ -1,17 +1,17 @@
 import React from "react";
 import { Button, Card } from "react-bootstrap";
+import './home.css';
 
 const ArtistCard = ({ artist }) => {
   return (
-    <Card style={{ width: "100%", backgroundColor: '#28242c' }}>
-        {console.log(artist)}
+    <Card className="artistCardContainer">
       <Card.Img height="600vh" variant="top" src={artist.image} />
       <Card.Body>
-        <Card.Title style={{color: 'white' }}>{artist.name}</Card.Title>
-        <Card.Text style={{color: 'white'}}>
+        <Card.Title className="textWhite">{artist.name}</Card.Title>
+        <Card.Text className="textWhite">
           Generos: {artist.genres.join(', ')}
         </Card.Text>
-        <Button variant="outline-success">Ver artista</Button>
+        <Button href={artist.url} target='_blank' variant="outline-success">Ver artista</Button>
       </Card.Body>
     </Card>
   );
