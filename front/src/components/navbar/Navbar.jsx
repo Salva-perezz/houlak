@@ -2,15 +2,23 @@ import { Navbar, Container, Form, FormControl, Button } from 'react-bootstrap'
 import logo from './logo.png'
 import { useState } from 'react';
 import axios from '../../axios';
+import { useDispatch } from "react-redux";
+import { setArtistAndAlbums } from '../../store/artistAndAlbums';
+import { setLoading } from '../../store/loading';
 
 const NavbarComponent = () => {
   const [searchInput, setSearchInput] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const dispatch = useDispatch();
 
   const submitHandler = async (e) => {
     e.preventDefault();
-    console.log('entre')
-    const { data } = axios.get(`/artist?artistName=${searchInput}`);
-    console.log(data);
+    setIsLoading(true);
+    dispatch(setLoading(true));
+    const { data } = await axios.get(`/artist?artistName=${searchInput}`);
+    dispatch(setArtistAndAlbums(data.body));
+    dispatch(setLoading(false));
+    setIsLoading(false);
   };
 
   return(
@@ -35,7 +43,7 @@ const NavbarComponent = () => {
           className="me-2"
           aria-label="Search"
         />
-        <Button variant="outline-success" type='submit'>Buscar</Button>
+        <Button variant="outline-success" type='submit' disabled={isLoading}>Buscar</Button>
       </Form>
     </Container>
   </Navbar>);
