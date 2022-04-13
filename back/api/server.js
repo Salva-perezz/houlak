@@ -11,7 +11,7 @@ app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(requestLogger);
-app.use('/', components)
+app.use('/', components);
 
 getSpotifyAuthToken();
 db.sync().then(() => {

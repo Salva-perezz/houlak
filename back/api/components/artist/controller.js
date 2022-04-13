@@ -8,7 +8,7 @@ const getArtist = async (req, res) => {
         if(!artistName) return response.error(req, res, 'No se envio ningun termino de busqueda', 400);
         
         const artistResponse = await spotifyApi.searchArtists(artistName);
-        console.log(artistResponse)
+
         if(!artistResponse.body.artists.total) return response.error(req, res, 'Lo siento, no encontramos lo que estas buscando', 404);
     
         const albumsResponse = await spotifyApi.getArtistAlbums(artistResponse.body.artists.items[0].id);
